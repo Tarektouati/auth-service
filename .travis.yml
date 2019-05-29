@@ -8,7 +8,8 @@ ghc:
 branches:
   only:
     - master
-
+install:
+  - stack install
 script:
   - stack install --local-bin-path $PWD/dist
 

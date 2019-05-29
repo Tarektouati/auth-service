@@ -1,0 +1,16 @@
+language: haskell
+ghc:
+  - '7.10'
+  - '7.8'
+  - '7.6'
+  - '8.4.1'
+
+branches:
+  only:
+    - master
+
+script:
+  - stack install --local-bin-path $PWD/dist
+
+after_success:
+  - ghr --username tarektouati --token $GITHUB_TOKEN --replace --prerelease --debug pre-release dist/

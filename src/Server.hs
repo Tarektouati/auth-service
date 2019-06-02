@@ -1,8 +1,4 @@
-{-# LANGUAGE DataKinds #-}
-{-# LANGUAGE TypeOperators #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE DataKinds, DuplicateRecordFields, OverloadedStrings, TypeOperators #-}
 
 
 module Server
@@ -10,17 +6,11 @@ module Server
       toInt
     ) where
 
-import Servant
-        ( Server
-        , Proxy(..)
-        , Application
-        , serve
-        , (:<|>)(..)
-        )
-import Network.Wai.Handler.Warp(run)
-import Data.Text (Text)
-import Router (UserAPI)
-import Handler (verify, generate)
+import           Data.Text (Text)
+import           Handler (generate, verify)
+import           Network.Wai.Handler.Warp (run)
+import           Router (UserAPI)
+import           Servant ((:<|>) (..), Application, Proxy (..), Server, serve)
 
 --- Utils :: Turn String toInt
 toInt :: String -> Int

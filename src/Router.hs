@@ -1,16 +1,12 @@
-{-# LANGUAGE DataKinds #-}
-{-# LANGUAGE TypeOperators #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE DataKinds, DuplicateRecordFields, OverloadedStrings, TypeOperators #-}
 
 
-module Router 
+module Router
       ( UserAPI
       ) where
 
-import Servant (ReqBody, Post, JSON, (:>), (:<|>))
-import Types
+import           Servant ((:<|>), (:>), JSON, Post, ReqBody)
+import           Types
 
 type UserAPI = "verify" :> ReqBody '[JSON] Verify :> Post '[JSON] Response
           :<|> "generate" :> ReqBody '[JSON] Generate :> Post '[JSON] Response

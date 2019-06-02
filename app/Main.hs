@@ -2,14 +2,14 @@
 
 module Main where
 
-import Server (webApp,toInt)
-import System.Environment (lookupEnv)
-import Data.Maybe  (fromMaybe)
-import Data.Text (pack)
+import           Data.Maybe (fromMaybe)
+import           Data.Text (pack)
+import           Server (toInt, webApp)
+import           System.Environment (lookupEnv)
 
 
 main :: IO ()
-main = do 
+main = do
   maybePort <- lookupEnv "PORT"
   maybeSecret <- lookupEnv "SECRET_KEY"
   let port = fromMaybe "4002" maybePort

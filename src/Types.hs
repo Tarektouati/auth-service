@@ -1,32 +1,28 @@
-{-# LANGUAGE DataKinds #-}
-{-# LANGUAGE TypeOperators #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE DataKinds, DeriveGeneric, DuplicateRecordFields, OverloadedStrings, TypeOperators #-}
 
 
-module Types 
+module Types
         ( User(..)
         , Verify(..)
         , Generate(..)
         , Response(..)
         ) where
 
-import Data.Aeson (ToJSON, FromJSON)
-import Data.Text (Text)
-import GHC.Generics(Generic)
+import           Data.Aeson (FromJSON, ToJSON)
+import           Data.Text (Text)
+import           GHC.Generics (Generic)
 
-data User = User { 
-    email :: Text,
-    id :: Text,
+data User = User {
+    email     :: Text,
+    id        :: Text,
     firstName :: Text,
-    lastName:: Text
+    lastName  :: Text
   } deriving (Eq, Show, Generic)
 
 instance ToJSON User
 instance FromJSON User
 
-data Verify = Verify{ 
+newtype Verify = Verify{
   jwt :: Text
 } deriving (Eq, Show, Generic)
 
@@ -34,7 +30,7 @@ instance ToJSON Verify
 instance FromJSON Verify
 
 
-data Generate = Generate{ 
+newtype Generate = Generate{
   user :: User
 } deriving (Eq, Show, Generic)
 
@@ -42,11 +38,11 @@ instance ToJSON Generate
 instance FromJSON Generate
 
 
-data Response = Response { 
+data Response = Response {
     message :: Text,
     success :: Bool,
-    token :: Maybe Text,
-    user :: Maybe User
+    token   :: Maybe Text,
+    user    :: Maybe User
   } deriving (Eq, Show, Generic)
 
 instance ToJSON Response

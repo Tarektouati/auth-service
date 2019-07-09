@@ -8,7 +8,8 @@ module Server
 
 import           Data.Text (Text)
 import           Handler (generate, verify)
-import           Network.Wai.Handler.Warp (run)
+import           Network.Wai.Handler.Warp (defaultSettings, runSettings, setLogger, setPort)
+import           Network.Wai.Logger (withStdoutLogger)
 import           Router (UserAPI)
 import           Servant ((:<|>) (..), Application, Proxy (..), Server, serve)
 
@@ -26,4 +27,9 @@ app :: Text -> Application
 app secret = serve userAPI $ server secret
 
 webApp :: Int -> Text -> IO ()
-webApp port secret = run port $ app secret
+webApp port secret = withStdoutLogger $ \applogger -> do
+  let settings = setPort port $ setLogger applogger defaultSettings
+  runSettings settings $ app secret
+
+
+

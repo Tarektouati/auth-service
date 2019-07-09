@@ -2,3 +2,7 @@
 auth-service.cabal
 *~
 auth-service-exe
+auth-service-exe.prof
+.vscode/
+*.hi
+*.o

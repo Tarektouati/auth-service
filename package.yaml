@@ -29,6 +29,7 @@ dependencies:
   - jwt
   - uuid
   - time
+  - wai-logger
   - text
   - containers
 library:
@@ -54,3 +55,4 @@ tests:
       - -with-rtsopts=-N
     dependencies:
       - auth-service
+      - hspec

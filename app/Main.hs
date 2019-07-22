@@ -12,6 +12,6 @@ main :: IO ()
 main = do
   maybePort <- lookupEnv "PORT"
   maybeSecret <- lookupEnv "SECRET_KEY"
-  let port = fromMaybe "4002" maybePort
-      secret = fromMaybe "super-secret-secret-key" maybeSecret
-    in webApp (toInt port) (pack secret)
+  let port = toInt $ fromMaybe "4002" maybePort
+      secret = pack $ fromMaybe "super-secret-secret-key" maybeSecret
+    in webApp port secret

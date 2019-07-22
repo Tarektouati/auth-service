@@ -38,7 +38,8 @@ curl -X POST \
 ## Configuration
 
 There's environment variables to customise your service :
-| Name | Description | Default |
-|------|-------------|---------|
-| PORT| The listening port of the service | 4002 |
-| SECRET_KEY| The secret used to generate and verify token | super-secret-secret-key |
+
+| Name       | Description                                  | Default                 |
+| ---------- | -------------------------------------------- | ----------------------- |
+| PORT       | The listening port of the service            | 4002                    |
+| SECRET_KEY | The secret used to generate and verify token | super-secret-secret-key |
